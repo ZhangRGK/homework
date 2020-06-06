@@ -13,6 +13,7 @@ import Filters from "../components/Filters";
 import dayjs from "dayjs";
 import BillForm from "../components/BillForm";
 import { IBill } from "../constants";
+import Statistics from "../components/Statistics";
 
 const BillList = () => {
   const { bills, setBills, categories, setCategories } = useContext(
@@ -22,6 +23,7 @@ const BillList = () => {
   const [selectedMonth, setSelectedMonth] = useState<string>("all");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [showForm, setShowForm] = useState<boolean>(false);
+  const [showStatistics, setShowStatistics] = useState<boolean>(false);
 
   useEffect(() => {
     (async () => {
@@ -44,13 +46,17 @@ const BillList = () => {
     setShowForm,
     showForm,
   ]);
+  const toggleStatisticsDisplay = useCallback(
+    () => setShowStatistics(!showStatistics),
+    [setShowStatistics, showStatistics]
+  );
 
   const onBillFormSubmit = useCallback(
     async (bill: IBill) => {
       await addBill(bill);
       setBills([...bills, bill]);
     },
-    [bills]
+    [bills, setBills]
   );
 
   const filteredBills = useMemo(
@@ -81,10 +87,20 @@ const BillList = () => {
           <button className="btn" onClick={toggleFormDisplay}>
             + 记账
           </button>
+          <button className="btn" onClick={toggleStatisticsDisplay}>
+            + 显示统计
+          </button>
         </div>
       </div>
       {showForm && (
         <BillForm categories={categories} onBillFormSubmit={onBillFormSubmit} />
+      )}
+      {showStatistics && (
+        <Statistics
+          bills={filteredBills}
+          month={selectedMonth}
+          categories={categories}
+        />
       )}
       <table cellSpacing={0}>
         <thead>

@@ -136,3 +136,31 @@ table tr:last-child td {
   width: 120px;
   padding: 10px;
 }
+
+.statistics {
+  padding: 10px 20px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.statistics .row {
+  border-top: 1px solid #ccc;
+  display: flex;
+}
+
+.statistics .row > div {
+  flex: 1;
+}
+
+.itemized h5 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.itemized .items {
+  display: flex;
+  flex-wrap: wrap;
+}
+.itemized .item {
+  width: 200px;
+}
