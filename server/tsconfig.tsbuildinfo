@@ -401,12 +401,16 @@
         "version": "ead1ed9dd4874f4907a506a31e4fe9c4e079b42816f6b7ea5016a6d5ddf2fde3",
         "signature": "ead1ed9dd4874f4907a506a31e4fe9c4e079b42816f6b7ea5016a6d5ddf2fde3"
       },
+      "../node_modules/@types/cors/index.d.ts": {
+        "version": "67a79af60f6e0f8eac8156364361915047de18fe367d7e0dd78a91add9f11bad",
+        "signature": "67a79af60f6e0f8eac8156364361915047de18fe367d7e0dd78a91add9f11bad"
+      },
       "./category.ts": {
         "version": "4f0b8ce459abb0868a814359e2e1c2a8086343cdef821ad900aeff8728b46254",
         "signature": "495db78621d3269668fc7d1f290e10aa3a3d0c3b880e5c2b114b944d3fa33d27"
       },
       "./index.ts": {
-        "version": "515c2b0a20f1d1feaaf5860b08a7752cbdd0018e8f33a41e645f0bf86b51fb70",
+        "version": "1d6be5ccbb811e41797a95f5f4232415bee3c7b61dce0eafeb4a8c130dda9c65",
         "signature": "baa9ada32a060d96f5be47ace0b9815c40c6f49be1bf95da45c200b0521867cf"
       },
       "./bill.ts": {
@@ -1375,6 +1379,13 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../node_modules/@types/cors/index.d.ts": [
+        "../node_modules/@types/express/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "./category.ts": [
         "../node_modules/csv-parser/index.d.ts",
         "./typings.d.ts",
@@ -1386,6 +1397,7 @@
       ],
       "./index.ts": [
         "../node_modules/@types/express/index.d.ts",
+        "../node_modules/@types/cors/index.d.ts",
         "../node_modules/@types/node/path.d.ts",
         "./bill.ts",
         "./category.ts",
@@ -2409,6 +2421,13 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../node_modules/@types/cors/index.d.ts": [
+        "../node_modules/@types/express/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "./category.ts": [
         "./index.ts"
       ],
@@ -2869,6 +2888,7 @@
       "../node_modules/@types/connect/index.d.ts",
       "../node_modules/@types/body-parser/index.d.ts",
       "../node_modules/@types/express/index.d.ts",
+      "../node_modules/@types/cors/index.d.ts",
       "./category.ts",
       "./bill.ts",
       "./typings.d.ts",

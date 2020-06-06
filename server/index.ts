@@ -1,4 +1,5 @@
 import * as express from "express";
+import * as cors from "cors";
 import * as path from "path";
 import { BillingDataProvider } from "./Bill";
 import { CategoryProvider } from "./Category";
@@ -42,6 +43,7 @@ const bindDataProvider: () => express.RequestHandler = () => {
   };
 };
 
+app.use(cors());
 app.use(bindDataProvider());
 
 app.use("/api", router);

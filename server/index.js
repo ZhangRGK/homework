@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
+const cors = require("cors");
 const path = require("path");
 const Bill_1 = require("./Bill");
 const Category_1 = require("./Category");
@@ -33,6 +34,7 @@ const bindDataProvider = () => {
         });
     };
 };
+app.use(cors());
 app.use(bindDataProvider());
 app.use("/api", router);
 app.listen(port, async () => {
