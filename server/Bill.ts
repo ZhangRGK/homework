@@ -33,7 +33,7 @@ export class BillingDataProvider implements IDataProvider<IBill> {
   private sync() {
     clearTimeout(this.timeoutId);
     this.timeoutId = setTimeout(async () => {
-      await this.billWriter.writerRecords(this.bills);
+      await this.billWriter.writeRecords(this.bills);
     }, 3000);
   }
 

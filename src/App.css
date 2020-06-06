@@ -40,13 +40,18 @@ table tr:last-child td {
   border-bottom: 0;
 }
 
-.filters {
+.action-bar {
   display: flex;
   margin: 20px 0;
+}
+
+.filters {
+  display: flex;
   background-color: #fff;
   border-radius: 4px;
   padding: 10px 20px;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  flex: 4;
 }
 
 .filter-item {
@@ -61,4 +66,73 @@ table tr:last-child td {
   font-size: 16px;
   width: 100px;
   outline: 0;
+}
+
+.action-buttons {
+  flex: 1;
+  display: flex;
+  margin-left: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.action-buttons .btn {
+  flex: 1;
+  padding: 0 10px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.bill-form {
+  display: flex;
+  background-color: #fff;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  justify-content: space-between;
+}
+
+.bill-form .row {
+  flex: 1;
+  justify-content: center;
+}
+
+.bill-form .form-item {
+  padding: 10px 20px;
+  display: flex;
+  flex: 1;
+  align-items: baseline;
+  height: 50px;
+}
+
+.bill-form label {
+  font-size: 16px;
+  width: 100px;
+  text-align: right;
+}
+.bill-form select {
+  flex: 1;
+  margin: 0 10px;
+  font-size: 16px;
+  width: 100px;
+  outline: 0;
+  border-bottom: 1px solid #ccc;
+  padding: 4px 10px;
+}
+
+.bill-form input {
+  flex: 1;
+  margin: 0 10px;
+  font-size: 16px;
+  width: 100px;
+  outline: 0;
+  border-bottom: 1px solid #ccc;
+  padding: 4px 10px;
+}
+.buttons {
+  justify-content: flex-end;
+}
+.buttons .btn {
+  background-color: skyblue;
+  width: 120px;
+  padding: 10px;
 }

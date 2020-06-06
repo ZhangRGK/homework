@@ -15,10 +15,7 @@ export const getAllBills = async () =>
     time: Number.parseInt(bill.time.toString()),
   }));
 
-export const addBill = (bill: IBill) =>
-  client.post("/bills", {
-    data: bill,
-  });
+export const addBill = (bill: IBill) => client.post("/bills", bill);
 
 // Category services
 

@@ -34,7 +34,7 @@ const Filters = (props: IProps) => {
 
   const filteredBills = useMemo(
     () =>
-      selectedMonth == "all"
+      selectedMonth === "all"
         ? bills
         : bills.filter(
             (b) => (dayjs(b.time).get("month") + 1).toString() === selectedMonth

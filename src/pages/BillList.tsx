@@ -7,10 +7,12 @@ import React, {
   useMemo,
 } from "react";
 import { DataContext } from "../dataContext";
-import { getAllBills, getCategories } from "../service";
+import { getAllBills, getCategories, addBill } from "../service";
 import BillListItem from "../components/BillListItem";
 import Filters from "../components/Filters";
 import dayjs from "dayjs";
+import BillForm from "../components/BillForm";
+import { IBill } from "../constants";
 
 const BillList = () => {
   const { bills, setBills, categories, setCategories } = useContext(
@@ -19,6 +21,7 @@ const BillList = () => {
 
   const [selectedMonth, setSelectedMonth] = useState<string>("all");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [showForm, setShowForm] = useState<boolean>(false);
 
   useEffect(() => {
     (async () => {
@@ -35,6 +38,19 @@ const BillList = () => {
   const onCategorySelectChange = useCallback(
     (category: string) => setSelectedCategory(category),
     [setSelectedCategory]
+  );
+
+  const toggleFormDisplay = useCallback(() => setShowForm(!showForm), [
+    setShowForm,
+    showForm,
+  ]);
+
+  const onBillFormSubmit = useCallback(
+    async (bill: IBill) => {
+      await addBill(bill);
+      setBills([...bills, bill]);
+    },
+    [bills]
   );
 
   const filteredBills = useMemo(
@@ -54,12 +70,22 @@ const BillList = () => {
   return (
     <Fragment>
       <h2>简易记账本</h2>
-      <Filters
-        onMonthSelectChange={onMonthSelectChange}
-        onCategorySelectChange={onCategorySelectChange}
-        bills={bills}
-        categories={categories}
-      />
+      <div className="action-bar">
+        <Filters
+          onMonthSelectChange={onMonthSelectChange}
+          onCategorySelectChange={onCategorySelectChange}
+          bills={bills}
+          categories={categories}
+        />
+        <div className="action-buttons">
+          <button className="btn" onClick={toggleFormDisplay}>
+            + 记账
+          </button>
+        </div>
+      </div>
+      {showForm && (
+        <BillForm categories={categories} onBillFormSubmit={onBillFormSubmit} />
+      )}
       <table cellSpacing={0}>
         <thead>
           <tr>
