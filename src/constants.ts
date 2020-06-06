@@ -1,6 +1,6 @@
 export enum BillType {
-  Expend = 0,
-  Income = 1,
+  Expend = "0",
+  Income = "1",
 }
 
 export interface IBill {

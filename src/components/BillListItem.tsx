@@ -1,20 +1,39 @@
-import React from "react";
-import { IBill } from "../constants";
+import React, { useMemo } from "react";
+import dayjs from "dayjs";
+import { IBill, BillType, ICategory } from "../constants";
 
 interface IProps {
   bill: IBill;
+  categories: ICategory[];
 }
 
 const BillListItem = (props: IProps) => {
-  const { bill } = props;
+  const { bill, categories } = props;
+
+  const billType = useMemo(() => {
+    if (bill.type === BillType.Expend) {
+      return "支出";
+    } else if (bill.type === BillType.Income) {
+      return "收入";
+    }
+    return "未知";
+  }, [bill.type]);
+
+  const categoryName = useMemo(() => {
+    const category = categories.find((c) => c.id === bill.category);
+    if (category == null) {
+      return "未知";
+    }
+    return category.name;
+  }, [categories, bill.category]);
 
   return (
-    <div className="row">
-      <div className="cell">{bill.category}</div>
-      <div className="cell">{bill.type}</div>
-      <div className="cell">{bill.amount}</div>
-      <div className="cell">{bill.time}</div>
-    </div>
+    <tr>
+      <td>{categoryName}</td>
+      <td>{billType}</td>
+      <td>￥{bill.amount}</td>
+      <td>{dayjs(bill.time).format("YYYY-MM-DD HH:mm:ss")}</td>
+    </tr>
   );
 };
 

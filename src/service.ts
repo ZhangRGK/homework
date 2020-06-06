@@ -9,7 +9,11 @@ export const client = axios.create({
 client.interceptors.response.use((response) => response.data);
 
 // Bill services
-export const getAllBills = () => client.get<IBill[], IBill[]>("/bills");
+export const getAllBills = async () =>
+  (await client.get<IBill[], IBill[]>("/bills")).map((bill) => ({
+    ...bill,
+    time: Number.parseInt(bill.time.toString()),
+  }));
 
 export const addBill = (bill: IBill) =>
   client.post("/bills", {
