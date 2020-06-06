@@ -1,4 +1,4 @@
-import React, { useCallback, useState, ChangeEvent } from "react";
+import React, { useCallback, useState, ChangeEvent, useMemo } from "react";
 import { ICategory, IBill, BillType } from "../constants";
 import dayjs from "dayjs";
 
@@ -14,12 +14,21 @@ const BillForm = (props: IProps) => {
   const [type, setType] = useState<string>("0");
   const [amount, setAmount] = useState<string>("0");
 
+  const filteredCategories = useMemo(
+    () => categories.filter((c) => c.type === type),
+    [type]
+  );
+
+  console.log(filteredCategories);
+
   const onCategoryChange = useCallback(
     (e: ChangeEvent<HTMLSelectElement>) => setCategory(e.target.value),
     [setCategory]
   );
   const onTypeChange = useCallback(
-    (e: ChangeEvent<HTMLSelectElement>) => setType(e.target.value),
+    (e: ChangeEvent<HTMLSelectElement>) => {
+      setType(e.target.value);
+    },
     [setType]
   );
   const onAmountChange = useCallback(
@@ -41,20 +50,25 @@ const BillForm = (props: IProps) => {
     <div className="bill-form">
       <div className="row">
         <div className="form-item">
+          <label htmlFor="form-type">账单类型</label>
+          <select id="form-type" value={type} onChange={onTypeChange}>
+            <option value={0}>支出</option>
+            <option value={1}>收入</option>
+          </select>
+        </div>
+        <div className="form-item">
           <label htmlFor="form-category">账单分类</label>
-          <select id="form-category" onChange={onCategoryChange}>
-            {categories.map((c) => (
+          <select
+            id="form-category"
+            value={category}
+            onChange={onCategoryChange}
+          >
+            {filteredCategories.map((c) => (
               <option key={`bill-form-${c.id}`} value={c.id}>
                 {c.name}
               </option>
             ))}
-          </select>
-        </div>
-        <div className="form-item">
-          <label htmlFor="form-type">账单类型</label>
-          <select id="form-type" onChange={onTypeChange}>
-            <option value={1}>收入</option>
-            <option value={0}>支出</option>
+            <option value="">其他</option>
           </select>
         </div>
       </div>

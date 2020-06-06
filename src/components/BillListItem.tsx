@@ -22,7 +22,7 @@ const BillListItem = (props: IProps) => {
   const categoryName = useMemo(() => {
     const category = categories.find((c) => c.id === bill.category);
     if (category == null) {
-      return "未知";
+      return "其他";
     }
     return category.name;
   }, [categories, bill.category]);

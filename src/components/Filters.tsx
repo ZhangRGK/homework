@@ -51,7 +51,7 @@ const Filters = (props: IProps) => {
           );
           return {
             value: c,
-            text: matchedCategory ? matchedCategory.name : "未知",
+            text: matchedCategory ? matchedCategory.name : "其他",
           };
         }
       ),
